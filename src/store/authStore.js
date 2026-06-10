@@ -115,6 +115,22 @@ const useAuthStore = create((set, get) => ({
     return data;
   },
 
+  /* ── Sign in with Google ────────────────── */
+  signInWithGoogle: async () => {
+    const client = requireSupabase();
+    const redirectTo = import.meta.env.VITE_PUBLIC_SITE_URL
+      || import.meta.env.VITE_APP_URL
+      || window.location.origin;
+    const { data, error } = await client.auth.signInWithOAuth({
+      provider: 'google',
+      options: {
+        redirectTo: `${redirectTo.replace(/\/$/, '')}/dashboard`,
+      },
+    });
+    if (error) throw error;
+    return data;
+  },
+
   /* ── Forgot / Reset password ─────────────── */
   sendPasswordResetEmail: async (email) => {
     const client = requireSupabase();
