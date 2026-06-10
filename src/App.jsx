@@ -10,6 +10,7 @@ import { LoadingSpinner } from './components/ui/index.jsx';
 // Auth
 import Login    from './pages/auth/Login';
 import Register from './pages/auth/Register';
+import Landing  from './pages/public/Landing';
 import ResetPassword from './pages/auth/ResetPassword';
 import VerifyCertificate from './pages/public/VerifyCertificate';
 
@@ -142,7 +143,7 @@ export default function App() {
 
       <Routes>
         {/* ── Public ── */}
-        <Route path="/" element={<Navigate to="/dashboard" replace />} />
+        <Route path="/" element={<Landing />} />
         <Route path="/login"    element={<GuestRoute><Login /></GuestRoute>} />
         <Route path="/register" element={<GuestRoute><Register /></GuestRoute>} />
         <Route path="/reset-password" element={<ResetPassword />} />
