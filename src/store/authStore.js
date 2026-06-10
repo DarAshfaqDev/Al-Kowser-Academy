@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { supabase, supabaseConfigError } from '../lib/supabase';
 
-const DEFAULT_PUBLIC_SITE_URL = 'https://al-kowser-academy.vercel.app';
+const DEFAULT_PUBLIC_SITE_URL = typeof window !== 'undefined' ? window.location.origin : 'https://al-kowser-academy.vercel.app';
 
 function isLocalOrigin(url) {
   if (!url) return false;
